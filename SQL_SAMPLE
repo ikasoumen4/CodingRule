@@ -82,7 +82,7 @@ OVER句 について
 DECLARE @T1 TABLE(Center VARCHAR(10), Period VARCHAR(2),Val int);
 
 INSERT INTO @T1
-			select 'C01' as Center, '01' as Period, 1 as Val
+		select 'C01' as Center, '01' as Period, 1 as Val
 union all	select 'C01' as Center, '02' as Period, 1 as Val
 union all	select 'C01' as Center, '03' as Period, 1 as Val
 union all	select 'C01' as Center, '04' as Period, 1 as Val
@@ -256,3 +256,25 @@ DEALLOCATE CUR_TABLES;
 -- 結果の確認
 SELECT * FROM @CUR_T;
 
+
+
+
+-- 課題
+-- 毎月累計されていく値を単月の値に戻すには？
+-- NULL値後は、値が一緒のこともあるし、増えていることもある。
+-- NULLは、直近で出現している値かそうでなければ0ととらえてよい。
+
+		select 100 as '01',100 as '02',100 as '03',100 as '04', 100 as '05', 100 as '06', 100 as '07', 100 as '08', 100 as '09', 100 as '10', 100 as '11', 100 as '12'
+union all	select NULL as '01',100 as '02',100 as '03',100 as '04', 100 as '05', 100 as '06', 100 as '07', 100 as '08', 100 as '09', 100 as '10', 100 as '11', 100 as '12'
+union all	select 100 as '01',NULL as '02',100 as '03',100 as '04', 100 as '05', 100 as '06', 100 as '07', 100 as '08', 100 as '09', 100 as '10', 100 as '11', 100 as '12'
+union all	select 100 as '01',100 as '02',NULL as '03',100 as '04', 100 as '05', 100 as '06', 100 as '07', 100 as '08', 100 as '09', 100 as '10', 100 as '11', 100 as '12'
+union all	select 100 as '01',100 as '02',100 as '03',NULL as '04', 100 as '05', 100 as '06', 100 as '07', 100 as '08', 100 as '09', 100 as '10', 100 as '11', 100 as '12'
+union all	select 100 as '01',100 as '02',100 as '03',100 as '04', NULL as '05', 100 as '06', 100 as '07', 100 as '08', 100 as '09', 100 as '10', 100 as '11', 100 as '12'
+union all	select 100 as '01',100 as '02',100 as '03',100 as '04', 100 as '05', NULL as '06', 100 as '07', 100 as '08', 100 as '09', 100 as '10', 100 as '11', 100 as '12'
+union all	select 100 as '01',100 as '02',100 as '03',100 as '04', 100 as '05', 100 as '06', NULL as '07', 100 as '08', 100 as '09', 100 as '10', 100 as '11', 100 as '12'
+union all	select 100 as '01',100 as '02',100 as '03',100 as '04', 100 as '05', 100 as '06', 100 as '07', NULL as '08', 100 as '09', 100 as '10', 100 as '11', 100 as '12'
+union all	select 100 as '01',100 as '02',100 as '03',100 as '04', 100 as '05', 100 as '06', 100 as '07', 100 as '08', NULL as '09', 100 as '10', 100 as '11', 100 as '12'
+union all	select 100 as '01',100 as '02',100 as '03',100 as '04', 100 as '05', 100 as '06', 100 as '07', 100 as '08', 100 as '09', NULL as '10', 100 as '11', 100 as '12'
+union all	select 100 as '01',100 as '02',100 as '03',100 as '04', 100 as '05', 100 as '06', 100 as '07', 100 as '08', 100 as '09', 100 as '10', NULL as '11', 100 as '12'
+union all	select 100 as '01',100 as '02',100 as '03',100 as '04', 100 as '05', 100 as '06', 100 as '07', 100 as '08', 100 as '09', 100 as '10', 100 as '11', NULL as '12'
+;
