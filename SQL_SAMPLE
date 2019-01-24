@@ -293,5 +293,15 @@ SQLSERVER
 ----------------------------
 */
 
+/*
+OUTPUT句
+INSERT,UPDATE,DELETEなどの変更対象となった行にアクセスすることができる。
+*/
+select * from users set name = 'test user' output name;
+
+
 -- ストアドプロシージャ一覧
-select * FROM sysobject where sysobjects.type = 'P'
+select * from sysobject where sysobjects.type = 'P';
+
+
+
