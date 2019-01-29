@@ -300,6 +300,19 @@ INSERT,UPDATE,DELETEなどの変更対象となった行にアクセスするこ
 select * from users set name = 'test user' output name;
 
 
+-- テーブル一覧
+select * from sys.tables
+
+-- カラム一覧
+select * from sys.columns 
+where
+object_id = (
+	select * from sys.tables
+	where
+	name = 'TEST_TBL'
+)
+
+
 -- ストアドプロシージャ一覧
 select * from sysobject where sysobjects.type = 'P';
 
