@@ -3,6 +3,25 @@
 SQL TRANING.
 */
 
+/*
+よく利用するコマンドなど
+*/
+
+-- select結果からテーブルとデータを作成する
+select * into test_users from (
+		select 1 as Id, 'Universe' as Location, '' as Parent
+union all	select 2 as Id, 'Mars' as Location, 'Universe' as Parent
+union all	select 3 as Id, 'Earth' as Location, 'Universe' as Parent
+union all	select 4 as Id, 'America' as Location, 'Earth' as Parent
+union all	select 5 as Id, 'Japan' as Location, 'Earth' as Parent
+union all	select 6 as Id, 'Tokyo' as Location, 'Japan' as Parent
+union all	select 7 as Id, 'Osaka' as Location, 'Japan' as Parent
+) as tmp;
+
+-- select結果を他のテーブルに挿入する
+insert into test_tbl
+select * from test_users;
+
 
 /*
 ----------------------------
