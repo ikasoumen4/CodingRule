@@ -380,6 +380,10 @@ T-SQL グローバル変数
 backup database my_database to disk='dest' with init
 
 
+/*
+その他
+*/
+select databasepropertyex('my_database','Status')
 
 
 
