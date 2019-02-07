@@ -373,7 +373,13 @@ T-SQL グローバル変数
 
 
 /*
-情報取得
+バックアップ
 */
+
+-- （要検証）復元できない、with initの意味が分からないので調べる
+backup database my_database to disk='dest' with init
+
+
+
 
 
