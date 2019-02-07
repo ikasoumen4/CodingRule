@@ -386,4 +386,8 @@ backup database my_database to disk='dest' with init
 select databasepropertyex('my_database','Status')
 
 
-
+/*
+Nプレフィックス
+*/
+-- 　日本語を入力するとS-JISとなるが、Nプレフィックスによりunicodeとなる。
+N'日本語を入力'
