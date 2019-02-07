@@ -335,5 +335,45 @@ object_id = (
 -- ストアドプロシージャ一覧
 select * from sysobject where sysobjects.type = 'P';
 
+-- 色々
+select @@version,@@servername
+
+-- リンクサーバ一覧
+exec sp_linkedservers	-- リンクサーバの一覧を取得する
+
+/*
+try-catch
+*/
+
+declare @message varchar(20);
+
+begin try
+	select 1/0
+end try
+
+begin catch
+	set @message = error_message()   -- メッセージを
+	SELECT  
+         ERROR_NUMBER() AS ErrorNumber  -- エラーの数
+        ,ERROR_SEVERITY() AS ErrorSeverity  -- 重大度
+        ,ERROR_STATE() AS ErrorState  -- エラー番号状態
+        ,ERROR_PROCEDURE() AS ErrorProcedure  -- エラーが発生したプロシージャ、トリガー名
+        ,ERROR_LINE() AS ErrorLine  -- エラーを発生させたルーチンの行番号
+        ,ERROR_MESSAGE() AS ErrorMessage; -- メッセージを取得する
+end catch
+;
+
+
+
+/*
+T-SQL グローバル変数
+*/
+@@error		-- 最後に実行した文のエラーステータスを格納する
+
+
+
+/*
+情報取得
+*/
 
 
