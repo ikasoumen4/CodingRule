@@ -391,3 +391,18 @@ Nプレフィックス
 */
 -- 　日本語を入力するとS-JISとなるが、Nプレフィックスによりunicodeとなる。
 N'日本語を入力'
+
+
+/*
+データベースマイグレーション
+ノウハウ蓄積中
+*/
+
+-- Common
+flyway
+liquidbase
+
+-- SQL Sever
+データベースプロジェクト（SSDT）
+.dacpac　.bacpac
+
