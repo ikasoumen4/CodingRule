@@ -454,6 +454,26 @@ liquidbase
 /*
 
 /*
+-- ログインユーザ作成
+CREATE LOGIN .\administrator
+	from WINDOWS
+	with DEFAULT_DATABASE = master
+;
+
+-- リンクサーバ追加
+EXEC sp_addlinkedserver
+	 @server = N'target_server'
+	,@srvproduct=N'SQL Server'
+
+-- リンクサーバにマッピング追加
+EXEC sp_addlinkdsrvlogin
+	 'remote_server'	-- remorte_server
+	,'TRUE'			-- useself
+	,'TRUE'			-- locallogin
+	,'TRUE'			-- remort_user
+	,'TRUE'			-- remort_password
+
+
 -- DBの整合性を確認する
 CHECKDB
 
