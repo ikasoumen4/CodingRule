@@ -477,4 +477,11 @@ EXEC sp_addlinkdsrvlogin
 -- DBの整合性を確認する
 CHECKDB
 
+-- トランザクションログを切り捨てる（SQL Server2008では勝手に切り捨て？）
+backup log [test_db] with trancate_only
+
+-- ログファイルを圧縮する
+DBCC SHRINKFILE(N'test_db_log',0,TRUNCATEONLY)
+
+
 */
