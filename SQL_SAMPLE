@@ -484,4 +484,31 @@ backup log [test_db] with trancate_only
 DBCC SHRINKFILE(N'test_db_log',0,TRUNCATEONLY)
 
 
+-- ストアドのテンプレート
+CREATE PROCEDURE TEST_PROC
+(
+	/* output parameter */
+	@MESSAGE VARCHAR(255) OUTPUT
+)
+AS BEGIN
+
+	DECLARE @RTN_CD INT
+	SET @RTN_CD = 0
+	SET @MESSAGE = NULL
+
+	BEGIN TRY
+
+		RAISERROR (15600,-1,-1, 'mysp_CreateCustomer')
+
+	END TRY
+
+	BEGIN CATCH
+	
+		SET @RTN_CD = 1
+		SET @MESSAGE = ERROR_MESSAGE()
+		
+	END CATCH
+
+END
+
 */
